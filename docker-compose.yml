@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  streamlit_app:
+    build: ./streamlit_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - task1_container
+      - task2_container
+    networks:
+      - app_network
+
+  task1_container:
+    build: ./task1_container
+    ports:
+      - "5001:5001"
+    networks:
+      - app_network
+
+  task2_container:
+    build: ./task2_container
+    ports:
+      - "5002:5002"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
