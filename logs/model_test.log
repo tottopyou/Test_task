@@ -1,0 +1,14 @@
+2024-12-08 19:38:54,150 [INFO] Results will be saved to: ./results
+2024-12-08 19:38:54,151 [INFO] Dataset size: 1
+2024-12-08 19:38:54,151 [INFO] Dataset root path: ./datasets/RoadNet
+2024-12-08 19:38:54,151 [DEBUG] Using selector: EpollSelector
+2024-12-08 19:38:54,288 [INFO] Processing image 0...
+2024-12-08 19:38:57,821 [INFO] Generated visuals for: ['./datasets/RoadNet/test_image/large_image.png']
+2024-12-08 19:38:58,006 [INFO] HTML result saved successfully.
+2024-12-08 19:39:12,432 [INFO] Results will be saved to: ./results
+2024-12-08 19:39:12,433 [INFO] Dataset size: 1
+2024-12-08 19:39:12,433 [INFO] Dataset root path: ./datasets/RoadNet
+2024-12-08 19:39:12,433 [DEBUG] Using selector: EpollSelector
+2024-12-08 19:39:12,589 [INFO] Processing image 0...
+2024-12-08 19:39:16,128 [INFO] Generated visuals for: ['./datasets/RoadNet/test_image/large_image.png']
+2024-12-08 19:39:16,345 [INFO] HTML result saved successfully.

@@ -6,24 +6,39 @@ services:
     ports:
       - "8501:8501"
     depends_on:
-      - task1_container
       - task2_container
     networks:
       - app_network
-
-  task1_container:
-    build: ./task1_container
-    ports:
-      - "5001:5001"
-    networks:
-      - app_network
+    volumes:
+      - ./streamlit_app:/app
+      # Map datasets directory to allow image upload from Streamlit
+      - ./task2_container/DeepSegmentor/datasets:/app/DeepSegmentor/datasets
+      - ./task2_container/DeepSegmentor/results:/app/DeepSegmentor/results
 
   task2_container:
     build: ./task2_container
+    runtime: nvidia # Use NVIDIA runtime for GPU support
     ports:
       - "5002:5002"
     networks:
       - app_network
+    shm_size: '4g'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all # Use all GPUs available
+              capabilities: [ gpu ]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all # Make all GPUs visible
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility # Expose compute and utility capabilities
+    volumes:
+      # Map the results directory to the host
+      - ./task2_container/DeepSegmentor/results:/app/DeepSegmentor/results
+      # Map the datasets directory for image processing
+      - ./task2_container/DeepSegmentor/datasets:/app/DeepSegmentor/datasets
+      - ./logs:/app/logs
 
 networks:
   app_network:

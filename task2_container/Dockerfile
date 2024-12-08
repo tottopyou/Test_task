@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir -p /app/logs && chmod -R 777 /app/logs
 
 # Copy the application code
 COPY . .
@@ -20,4 +21,4 @@ COPY . .
 EXPOSE 5002
 
 # Run the Flask application
-CMD ["python", "task2.py"]
+CMD ["python", "task2.py", "DeepSegment/test.py"]
