@@ -111,6 +111,7 @@ if st.button("Check GPU Availability") or not st.session_state.gpu_checked:
         if gpu_response.status_code == 200 and gpu_response.json().get("gpu_available", False):
             gpu_available = True
             st.session_state.gpu_available = True
+            st.write(f"GPU is available.")
         else:
             st.session_state.gpu_available = False
             st.warning("GPU is not available.")
@@ -132,7 +133,6 @@ selected_device = st.radio(
 
 st.session_state.selected_device = selected_device
 gpu_id = 0 if selected_device == "GPU (if available)" and gpu_available else -1
-st.write(f"Selected device: {selected_device} (GPU ID: {gpu_id})")
 
 # Image uploader
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
@@ -183,9 +183,6 @@ if uploaded_file is not None:
                 subfolder_path = os.path.join(BASE_FOLDER, subfolder)
                 host_path = os.path.join(subfolder_path, uploaded_file_name)
                 flask_path = f"/app/DeepSegmentor/datasets/RoadNet/{subfolder}/{uploaded_file_name}"
-
-                st.write(f"Host path ({subfolder}): {host_path}")
-                st.write(f"Flask path ({subfolder}): {flask_path}")
 
                 try:
                     # Save the scaled image
