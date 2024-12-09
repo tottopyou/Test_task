@@ -105,7 +105,7 @@ The application will provide a unified interface for both tasks:
 
 ### Task 1
 
-- **Challenge:** The primary issue was managing the varying quality and size of the input images. The smaller image was often not proportional to the larger image, making direct template matching challenging.
+- **Challenge:** The primary issue was managing the varying quality and size of the input images. The smaller image was not proportional to the larger image, making direct template matching challenging.
 - **Solution:** After experimenting with various OpenCV methods, such as `Difference-of-Gaussians`, and `Scale-Invariant Feature Transforms`, it became clear that scaling the smaller image to match the larger image’s proportions was essential. The implemented solution involved dynamically resizing the smaller image across multiple scales and using `cv2.TM_CCOEFF_NORMED` to determine the best match. This approach, combined with customizable scaling options, provided precise and reliable results. Allowing users to input custom scales further enhanced the accuracy and flexibility of the solution, yielding consistently better results with appropriate adjustments to the smaller image's size.
 
 ### Task 2
@@ -113,8 +113,27 @@ The application will provide a unified interface for both tasks:
 - **Challenge:** The complexity of detecting roads in images stemmed from the quality and scale of the objects in the photos. Traditional lightweight methods, such as edge detection and thresholding, were insufficient due to the intricate nature of the task.
 - **Solution:** Recognizing the limitations of simpler approaches, a pre-trained model was necessary. After considerable research, DeepSegmentor ([https://github.com/yhlleo/DeepSegmentor](https://github.com/yhlleo/DeepSegmentor)) was selected for its robust road detection capabilities, including centerline detection. However, challenges remained. The model did not natively support JPG images, requiring conversion to PNG format. Additionally, scaling the input images to larger sizes significantly improved detection accuracy. GPU configuration was also addressed to ensure optimal performance during processing. By implementing these adjustments, the solution effectively utilized the DeepSegmentor model to achieve high-quality road detection results with scalable input images.
 
+## References to authors of DeepSegmentor model:
+```
+@article{liu2019deepcrack,
+  title={DeepCrack: A Deep Hierarchical Feature Learning Architecture for Crack Segmentation},
+  author={Liu, Yahui and Yao, Jian and Lu, Xiaohu and Xie, Renping and Li, Li},
+  journal={Neurocomputing},
+  volume={338},
+  pages={139--153},
+  year={2019},
+  doi={10.1016/j.neucom.2019.01.036}
+}
 
-## Contributing
-
-Contributions are welcome. Please fork the repository and submit a pull request for any enhancements or fixes.
+@article{liu2019roadnet,
+  title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
+  author={Liu, Yahui and Yao, Jian and Lu, Xiaohu and Xia, Menghan and Wang, Xingbo and Liu, Yuan},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  volume={57},
+  number={4},
+  pages={2043--2056},
+  year={2019},
+  doi={10.1109/TGRS.2018.2870871}
+}
+```
 
