@@ -206,7 +206,6 @@ if uploaded_file is not None:
             if response.status_code == 200:
                 st.success("Road detection successful!")
 
-                # Display the resulting predicted image
                 st.markdown("### Road Detection Predicted Image")
                 try:
                     # Construct the expected predicted image filename
