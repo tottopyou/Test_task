@@ -99,6 +99,10 @@ The application will provide a unified interface for both tasks:
 - **Task 1:** Upload the smaller and larger images, choose the scale mode, and view the detected region.
 - **Task 2:** Upload an image, select the scaling factor, and view the segmented roads in the output.
 
+### Warning
+
+> **⚠️ Warning:** If you choose an 8x scale, it may take a significant amount of time to generate results, even when using a GPU.
+
 ---
 
 ## Challenges and Solutions
