@@ -85,7 +85,6 @@ if small_image_file and large_image_file:
             cv2.imwrite(result_path, large_image_color[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]])
             st.image(cv2.cvtColor(detected_image, cv2.COLOR_BGR2RGB), caption="Detected Region", use_container_width=True)
 
-            # Display top-left corner coordinates
             st.write(f"Top-left corner coordinates of the smaller image in the larger image: {top_left}")
             st.write(f"Result saved for further processing: {result_path}")
         else:
