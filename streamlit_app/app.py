@@ -202,7 +202,7 @@ if uploaded_file is not None:
             # Send request to Flask app
             response = requests.post("http://task2_container:5002/process", json=payload)
 
-                        # Handle response
+            # Handle response
             if response.status_code == 200:
                 st.success("Road detection successful!")
 
